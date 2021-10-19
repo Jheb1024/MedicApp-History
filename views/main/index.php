@@ -7,6 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Esta es la vista de main</h1>
+   <?php require 'views/header.php' ?>
+
+   <div id="main">
+       <h1 class="center">Bienvenido a MedicApp-History la aplicación web de los médicos</h1>
+   </div>
+
+   <?php require 'views/footer.php' ?>
+
+
 </body>
 </html>

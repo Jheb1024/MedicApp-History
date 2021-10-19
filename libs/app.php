@@ -2,11 +2,18 @@
 require_once 'controllers/error_recurso.php';
 class App{
     function __construct(){
-        echo "<p>Nueva App</p>";
+       // echo "<p>Nueva App</p>";
 
-        $url = $_GET['url'];
+        $url = isset($_GET['url']) ? $_GET['url']:null;
         $url = rtrim($url, '/');
         $url = explode('/', $url);
+
+        if(empty($url[0])){
+            $archivoController = 'controllers/main.php';
+            require_once $archivoController;
+            $controller = new Main();
+            return false;
+        }
         //var_dump($url);
 
         $archivoController = 'controllers/' . $url[0] . '.php';
