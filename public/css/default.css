@@ -37,3 +37,7 @@ body{
 .error{
     color: #ac2323;
 }
+form {
+    text-align: right;
+    padding-right: 30px;
+  }

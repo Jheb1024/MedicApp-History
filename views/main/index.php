@@ -12,6 +12,23 @@
    <div id="main">
        <h1 class="center">Bienvenido a MedicApp-History la aplicación web de los médicos</h1>
    </div>
+    <div id="login">
+        <form action="" method="post">
+            <ul>
+                <li>
+                    <label for="user_name">Usuario:</label>
+                    <input type="text" id="user_name" name="user_name">
+                </li>
+                <li>
+                    <label for="password">Contraseña:</label>
+                    <input type="text" id="password" name="password">
+                </li>
+                <li class="button">
+                    <button type="submit">Iniciar Sesión</button>
+                </li>
+            </ul>
+        </form>
+   </div>
 
    <?php require 'views/footer.php' ?>
 
