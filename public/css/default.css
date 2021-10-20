@@ -41,3 +41,6 @@ form {
     text-align: right;
     padding-right: 30px;
   }
+  #datos-patologicos form{
+    text-align: left;
+  }

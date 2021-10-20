@@ -17,6 +17,7 @@ class App{
         //var_dump($url);
 
         $archivoController = 'controllers/' . $url[0] . '.php';
+        //echo $url[0];
 
         if(file_exists($archivoController)){
             require_once $archivoController;
