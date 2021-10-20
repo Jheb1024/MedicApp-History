@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="bulma/css/bulma.css">
 </head>
 <body>
-<?php require 'views/header.php' ?>
+<?php require 'views/home/navbar.php' ?>
 <nav class="navbar is-light" role="navigation" aria-label="main-navigation">
     <div class="navbar-brand" style="padding-left: 20px; padding-top: 10px; padding-bottom: 10px;">
         <img src="img/logo%20sin%20fondo.png" alt="MedicAPP logo" width="160" height="70">

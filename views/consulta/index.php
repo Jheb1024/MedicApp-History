@@ -7,7 +7,7 @@
     <title></title>
 </head>
 <body>
-    <?php require 'views/header.php' ?>
+<?php require 'views/home/navbar.php' ?>
     <h1 class="center">Consulta Médica</h1>
     <br>
     <h3>Datos de la consulta</h3>

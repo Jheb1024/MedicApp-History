@@ -8,7 +8,7 @@
     <title>MedicAPP</title>
 </head>
 <body>
-<?php require 'views/header.php' ?>
+<?php require 'views/home/navbar.php' ?>
     <h2> Agregar nuevo paciente</h2> <br>
 <form method="post" enctype="multiplart/form-data">
     <div id="campos">
