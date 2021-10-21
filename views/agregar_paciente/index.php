@@ -1,32 +1,103 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset = "UTF-8">
-    <meta name="viewport" content= "width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="../Resource/agregar.css" rel="stylesheet">
-    <title>MedicAPP</title>
+    <title>Agregar Paciente</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="../../bulma/css/bulma.css">
 </head>
 <body>
-<?php require 'views/home/navbar.php' ?>
-    <h2> Agregar nuevo paciente</h2> <br>
-<form method="post" enctype="multiplart/form-data">
-    <div id="campos">
-<p>Nombre del paciente: <input type= "text" name= "nombrep" size = "40"></p>
-<p>Apellido paterno: <input type= "text" name= "app" size = "40"></p>
-<p>Apellido materno: <input type= "text" name= "apm" size = "40"></p>
-<p>Fecha de Nacimiento: <input type= "date" name= "fecha" size = "40"></p>
-<p>Edad: <input type= "number" name= "edad" size = "40"></p>
-<p>Altura: <input type="number" step="any" name= "alturap" size = "40"></p>
-<p>Peso: <input type="number" step="any" name= "pesop" size = "40"></p>
-<p>No. Seguro Social: <input type= "text" name= "seguro" size = "40"></p>
-</div>
+<nav class="navbar is-light" role="navigation" aria-label="main-navigation">
+    <div class="navbar-brand" style="padding-left: 20px; padding-top: 10px; padding-bottom: 10px;">
+        <img src="../../public/img/logo%20sin%20fondo.png" alt="MedicAPP logo" width="160" height="70">
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <div class="navbar-menu">
 
-<div class="botones">
-<input type="submit" id="guardar" value="Guardar" name="registro"> 
-<input type="reset" id="borrar" value="Borrar"> 
+        <div class="navbar-start">
 
-</form>
-<?php require 'views/footer.php' ?>
+        </div>
+
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-light" href="../home/index.php">
+                        Inicio
+                    </a>
+                    <a class="button is-light" href="../buscar_paciente/index.php">
+                        Buscar Paciente
+                    </a>
+                    <a class="button is-primary" href="index.php">
+                        <strong>Agregar Paciente</strong>
+                    </a>
+                    <a class="button is-light">
+                        Salir
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<br><br>
+<main class="has-text-centered has-text-primary">
+    <div class="columns">
+        <div class="column is-half is-offset-one-quarter">
+            <div class="columns is-vcentered">
+                <div class="column is-one-third">
+                    <label class="label">Nombre:</label>
+                </div>
+                <div class="column is-two-thirds">
+                    <input class="input" type="text" placeholder="Juan Perez" style="text-align: center">
+                </div>
+            </div>
+            <div class="columns is-vcentered">
+                <div class="column is-one-third">
+                    <label class="label">Altura:</label>
+                </div>
+                <div class="column is-two-thirds">
+                    <input class="input" type="number" placeholder="1.71" style="text-align: center">
+                </div>
+            </div>
+            <div class="columns is-vcentered">
+                <div class="column is-one-third">
+                    <label class="label">Peso (Kg):</label>
+                </div>
+                <div class="column is-two-thirds">
+                    <input class="input" type="number" placeholder="70" style="text-align: center">
+                </div>
+            </div>
+            <div class="columns is-vcentered">
+                <div class="column is-one-third">
+                    <label class="label">No. Seguro Social:</label>
+                </div>
+                <div class="column is-two-thirds">
+                    <input class="input" type="number" placeholder="1234567890" style="text-align: center">
+                </div>
+            </div>
+            <div class="columns is-vcentered">
+                <div class="column is-one-third">
+                    <label class="label">Fecha Nacimiento:</label>
+                </div>
+                <div class="column is-two-thirds">
+                    <input class="input" type="date" style="text-align: center">
+                </div>
+            </div>
+            <div class="container">
+                <a class="button is-primary">
+                    <strong>Agregar</strong>
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="footer">
+    <label class="label has-text-right">&#169 MedicApp 2021</label>
+</footer>
 </body>
 </html>
