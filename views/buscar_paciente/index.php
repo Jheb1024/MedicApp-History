@@ -53,13 +53,13 @@
         </div>
         <div class="column">
             <label>
-                <input class="input" type="text" placeholder="">
+                <input class="input" type="text" id="caja_busqueda" placeholder="">
             </label>
         </div>
         <div class="column">
             <div class="select is-primary">
                 <label>
-                    <select>
+                    <select id="opcion">
                         <option>Buscar por nombre</option>
                         <option>Buscar por fecha</option>
                     </select>
@@ -68,34 +68,15 @@
         </div>
     </div>
     <div class="columns is-centered">
-        <div class="column">
-            <table class="table" style="margin-left: auto; margin-right: auto;">
-                <thead>
-                <tr>
-                    <th>Número de Paciente</th>
-                    <th>Nombre</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <th>1</th>
-                    <th>Jesús Alexis Ramírez Navor</th>
-                </tr>
-                <tr>
-                    <th>2</th>
-                    <th>Jhon Gómez Agustin</th>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <th>Alma Ileana Rivera Hernandez</th>
-                </tr>
-                </tbody>
-            </table>
+        <div class="column" id="datos">
+
         </div>
     </div>
 </main>
 <footer class="footer">
     <label class="label has-text-right">&#169 MedicApp 2021</label>
 </footer>
+<script src="../../libs/jquery-3.6.0.min.js"></script>
+<script src="../../controllers/buscar_ajax.js"></script>
 </body>
 </html>
