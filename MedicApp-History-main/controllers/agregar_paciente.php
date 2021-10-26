@@ -1,25 +1,32 @@
 <?php
 
+require_once 'models/administrarModel.php';
+
 class agregar_paciente extends Controller
 {
 
     function __construct(){
         parent::__construct();
-        $this->view->render('agregar_paciente/index');
-    }
+        
 
-    public function crearp(){
-        $nombre = $_POST['nombre'];
-        $apellidop = $_POST['app'];
-        $apellidom = $_POST['apm'];
-        $altura = $_POST['altura'];
-        $edad = $_POST['edad'];
-        $fechana = $_POST['FechaNacimiento'];
-        $peso = $_POST['peso'];
-        $seguros = $_POST['no_seguro_social'];
+        session_start();
 
-        $this->model->insert(['nombre' => $nombre, 'app' => $apellidop, 'apm' => $apellidom, 'altura' => $altura, 'edad' => $edad, 'FechaNacimiento' => $fechana, 'peso' => $peso, 'no_seguro_social' => $seguros]);
-}
+        $aux = new administrarModel();
+            $this->view->render('agregar_paciente/index');
 
-}
+            /*
+                    $nombre = $_POST['nombre'];
+                    $apellidop = $_POST['app'];
+                    $apellidom = $_POST['apm'];
+                    $altura = $_POST['altura'];
+                    $edad = $_POST['edad'];
+                    $fechana = $_POST['FechaNacimiento'];
+                    $peso = $_POST['peso'];
+                    $seguros = $_POST['no_seguro_social'];
+            
+                    $aux->insert($nombre, $apellidop, $apellidom, $altura, $edad, $fechana, $peso,$seguros);*/
+                
+            }
+
+        }
 

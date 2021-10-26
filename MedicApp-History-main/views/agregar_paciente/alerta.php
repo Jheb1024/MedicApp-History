@@ -1,8 +1,6 @@
 <?php
 
-$nombre = $_POST["nombre"];
-$apep = $_POST["app"];
+$nombre= $_REQUEST["nombre"];
 
-echo "Registro exitoso para " + $nombre + " "+ $apep;
-
+echo "Registro exitoso de ".$nombre;
 ?>

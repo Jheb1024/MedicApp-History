@@ -1,64 +1,115 @@
-var ref = document.getElementById('formulario');
-  ref.addEventListener('click',iniciar,false)
 
-var xhr;
+addEvent(window,'load', iniciar, false);
+
+var nombre;
+var app;
+var apm;
+var altura;
+var edad;
+var fecha;
+var peso;
+var seguro;
 
 function iniciar()
 {
-    e.preventDefault();
-    var ob1=document.getElementById("nombre");
-    var ob2=document.getElementById("app");
-
-    jugar(ob1.value);
+    var ob = document.getElementById('guardar');
+    addEvent(ob, 'click', validar, false);
 }
 
-function jugar()
+function addEvent(elemento, aux, funcion, captura)
+{
+  if(elemento.attachEvent)
+  {
+    elemento.attachEvent('on',+aux,funcion);
+    return true;
+  }else
+  if(elemento.addEventListener)
+  {
+    elemento.addEventListener(aux, funcion, captura);
+    return true;
+  }else
+  return false;
+}
+
+function validar()
 {
   //INCISO C
-  var comparar = document.getElementById("nombre");
-
-  xhr = crearXMLHttpRequest();
-  let comparar = document.querySelector("#nombre").value;
-
-  xhr.onreadystatechange = procesar;
+ nombre = document.getElementById('nombre').value;
+  app = document.getElementById('app').value;
+ apm = document.getElementById('apm').value;
+ altura = document.getElementById('altura').value;
+  edad = document.getElementById('edad').value;
+fecha = document.getElementById('FechaNacimiento').value;
+peso = document.getElementById('peso').value;
+ seguro = document.getElementById('no_seguro_social').value;
+  
+  if(!nombre)
+  {
    
-    xhr.open("GET",`alerta.php?nombre=${comparar}`,false);
-    xhr.send(null);    
+    document.getElementById('nom').innerHTML = '<div style = "color:red;"> Introduzca los datos solicitados</div>';
+  }
+  if(!app)
+  {
+    document.getElementById('ap1').innerHTML = '<div style = "color:red;"> Introduzca los datos solicitados</div>';
+  }
+  if(!apm)
+  {
+    document.getElementById('ap1').innerHTML = '<div style = "color:red;"> Introduzca los datos solicitados</div>';
+  }
+  if(!altura)
+  {
+    document.getElementById('alt').innerHTML = '<div style = "color:red;"> Introduzca los datos solicitado</div> ';
+  }
+  if(!edad)
+  {
+    document.getElementById('ed').innerHTML = '<div style = "color:red;"> Introduzca los datos solicitados</div>';
+  }
+  if(!fecha)
+  {
+    document.getElementById('fecha').innerHTML = '<div style = "color:red;"> Introduzca los datos solicitados</div>';
+  }
+  if(!peso)
+  {
+    document.getElementById('pe').innerHTML = '<div style = "color:red;"> Introduzca los datos solicitados</div>';
+  }
+  if(!seguro)
+  {
+    document.getElementById('seguro').innerHTML = '<div style = "color:red;"> Introduzca los datos solicitados</div>';
+  }
+
+
+  if(nombre && app && apm && altura && edad && fecha && peso && seguro)
+  {
+
+    motor();
+  }
+
 }
 
-function procesar()
-    {
-      var resultados = document.getElementById("load");
-       if(xhr.readyState==4 && xhr.status==200)
-       {
-            resultados.innerHTML = '';
-         //inciso D
-         xhr.innerHTML = resultados;
-         var div = xhr.responseText;
-    actualizar(div);
-  
-       }
-       else
-       {
-        xhr.innerHTML = resultados;
-      }
-       }
-
-       function actualizar(ganancia)
+function motor()
 {
-  
-  var nuevaGanancia = document.getElementById("resultados");
-  nuevaGanancia.innerHTML = ganancia;
-  
-}
-
-function crearXMLHttpRequest() 
-{
-  var xmlHttp=null;
-  if (window.ActiveXObject) 
-    xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-  else 
-    if (window.XMLHttpRequest) 
-      xmlHttp = new XMLHttpRequest();
-  return xmlHttp;
+  var parametros = {
+    "nombre" : nombre,
+    "app" : app,
+    "apm" : apm,
+    "altura" : altura,
+    "edad" : edad,
+    "FechaNacimiento" : fecha,
+    "peso" : peso,
+    "no_seguro_social" : seguro
+};
+$.ajax({
+    data:  parametros,
+    url:   'controllers/nuevo.php',
+    dataType: 'html',
+    type:  'post',
+    beforeSend: function () {
+            $("#mensaje").html("Procesando, espere por favor...");
+            console.log(parametros);
+    },
+    success:  function (response) {
+            jQuery("#mensaje").html(response);
+            console.log(response);
+    }
+});
 }

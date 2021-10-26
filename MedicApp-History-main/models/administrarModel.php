@@ -1,32 +1,42 @@
 <?php
 
-abstract class administrarModel extends Model{
+require_once ('D:/xampp/htdocs/Proyecto/MedicApp-History-main/libs/model.php');
+
+
+class administrarModel extends Model{
 
     public function __construct()
     {
         parent::__construct();
     }
 
-    public function insert($datos){
+    public function insert($nombre, $apellidop, $apellidom, $altura, $edad, $fechana, $peso,$seguros){
 
-        $query = $this->db->connect()->prepare('insert into paciente (nombre, app, apm, altura, edad, FechaNacimiento, peso, no_seguro_social) values (:nombre, :app, :apm, :altura, :edad, :FechaNacimiento, :peso, :no_seguro_social)');
+        $instancia = new Database();
+
+        $query = $instancia->connect();
+
+        $query1 = $query->prepare('insert into paciente (nombre, app, apm, altura, edad, FechaNacimiento, peso, no_seguro_social) values (?,?,?,?,?,?,?,?)');
 
 
-        $query->execute(['nombre' => $datos['nombre'], 'app' => $datos['app'], 'apm' => $datos['apm'], 'altura' => $datos['altura'], 'edad' => $datos ['edad'], 'FechaNacimiento' => $datos['FechaNacimiento'], 'peso' => $datos['peso'], 'no_seguro_social' => $datos['no_seguro_social']]);
+        $query1->execute([$nombre, $apellidop, $apellidom, $altura, $edad, $fechana, $peso,$seguros]);
 
-         //crear Historial medico
+        //crear Historial medico
 
-         $historial = $this->db->connect()->prepare('insert into historialmedico (nombre_paciente) values (:nombre)');
-         $historial->execute(['nombre' => $datos['nombre']]);
+         $query2= $query->prepare('insert into historialmedico (nombre_paciente) values (?)');
+
+         $query2->execute([$nombre]);
  
-         $historialid = $this->db->connect()->prepare('update historialmedico set id_paciente = id where nombre_paciente = :nombre');
-         $historialid->execute(['nombre' => $datos['nombre']]);
+         
+         $query3 = $query->prepare('update historialmedico set id_paciente = id where nombre_paciente = ?');
+
+         $query3->execute([$nombre]);
  
         //actualizar id del historial
- 
-         $actuid = $this->db->connect()->prepare('update paciente set id_historial = id_paciente where nombre = :nombre');
-         $actuid->execute(['nombre' => $datos['nombre'],]);
+         
+         $query4 = $query->prepare('update paciente set id_historial = id_paciente where nombre = ?');
 
+         $query4->execute([$nombre]);
     }
 }
 

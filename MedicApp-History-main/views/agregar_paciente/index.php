@@ -4,16 +4,16 @@
     <meta charset = "UTF-8">
     <meta name="viewport" content= "width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script
-			  src="https://code.jquery.com/jquery-3.6.0.js"
-			  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-			  crossorigin="anonymous"></script>
-    <script src="ajax.js" language="JavaScript"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"> </script>
+    <script type= "text/javascript" src="views\agregar_paciente\ajax.js"></script>
+    <script type= "text/javascript" src="views\agregar_paciente\app.js"></script>
     <link rel="stylesheet" href="bulma/css/bulma.css">
+    <link rel="stylesheet" href="bulma/css/pop.css">
     <title>MedicAPP</title>
     
 </head>
 <body>
+
 <?php require 'views/home/navbar.php' ?>
 <nav class="navbar is-light" role="navigation" aria-label="main-navigation">
     <div class="navbar-brand" style="padding-left: 20px; padding-top: 10px; padding-bottom: 10px;">
@@ -57,55 +57,95 @@
 </div>
 </div>
 
-    <div id="main">
-
-    <form action="<?php echo constant('URL'); ?>agregar_paciente/crearp" method="POST" id= "formulario">
+    <form method="POST" id= "formulario"  role="form" enctype="multipart/form-data">
 
 <p>
     <label for="nombre"> Nombre del paciente: </label> <br>
-    <input type= "text" placeholder="Nombre" name= "nombre" size = "40" required>
+    <input id ="nombre" type= "text" placeholder="Nombre" name= "nombre" size = "40">
+    <div id="nom"> </div>
 </p>
 <p>
     <label for="app">Apellido paterno:</label> <br> 
-    <input type= "text" placeholder = "Apellido paterno" name= "app" size = "40" required>
+    <input type= "text" placeholder = "Apellido paterno" name= "app" id= "app" size = "40" >
+    <div id="ap1"> </div>
 </p>
 <p>
     <label for="apm">Apellido materno:</label> <br> 
-<input type= "text" placeholder = "Apellido materno" name= "apm" size = "40" required>
+<input type= "text" placeholder = "Apellido materno" name= "apm" id= "apm" size = "40" >
+<div id="ap2"> </div>
 </p>
 <p>
     <label for="altura">Altura:</label> <br> 
-<input type="number" step="any" placeholder = "Altura en metros" name= "altura" size = "40" required>
+<input type="number" step="any" placeholder = "Altura en metros" name= "altura"  id= "altura" size = "40">
+<div id="alt"> </div>
 </p>
 <p>
    <label for="edad"> Edad: </label> <br> 
-<input type= "number" name= "edad" placeholder = "Edad" size = "40" required>
+<input type= "number" name= "edad" id= "edad" placeholder = "Edad" size = "40">
+<div id="ed"> </div>
 </p>
 <p>
     <label for="FechaNacimiento">Fecha de Nacimiento:</label> <br> 
-    <input type= "date" name= "FechaNacimiento" size = "40" required>
+    <input type= "date" id= "FechaNacimiento" name= "FechaNacimiento" size = "40">
+    <div id="fecha"> </div>
 </p>
 <p>
     <label for="peso">Peso: </label> <br> 
-    <input type="number" step="any" name= "peso" placeholder = "Peso en kg" size = "40" required>
+    <input type="number" step="any" name= "peso" id= "peso" placeholder = "Peso en kg" size = "40">
+    <div id="pe"> </div>
 </p>
 <p>
     <label for="no_seguro_social">No. Seguro Social:</label> <br> 
-    <input type= "text" name= "no_seguro_social" placeholder = "No. Seguro Social" size = "40" required>
+    <input type= "text" name= "no_seguro_social" id= "no_seguro_social" placeholder = "No. Seguro Social" size = "40">
+    <div id="seguro"> </div>
 </p>
 
-<button id= "guardar"> Guardar </button>
+<button type = "button" id= "guardar" name= "guardar" > Guardar </button>
 <input type="reset" id="borrar" value="Borrar"> 
+<!--<input type="submit" id="guardar" value="Guardar">-->
 
 
 <div id="mensaje"></div>
     <span id="load"></span>
 
-
-</form>
+    <div class = "modal-container" id="modal-container">
+    <div class= "modal" id= "modal">
+        <h1>¡Registro exitoso!</h1>
+        <p> El registro se ha guardado</p>
+        <button id="close"> Cerrar </button>
+</div>
 </div>
 
-<script type="text/javascript">
+</form>
+
+
+
+
+<!--
+<script> 
+$('formulario').on('submit', function(event) {
+    event.preventDefault();
+
+    $.ajax({
+        url: "alerta.php",
+        type: "POST",
+        data:{
+        //aca colocaras todos los campos que deseas enviar al backend
+        'nombre': $('#nombre').val(), 
+        'app': $('#app').val(),
+    },}
+        contentType: false,
+        processData: false,
+        success: function(data) {
+            $('#mensaje').html(data);
+        }
+    });
+
+});
+
+</script>-->
+
+<!-- <script type="text/javascript">
 
 $(document).ready(function(){
     //$('#guardar').click(function(){
@@ -173,9 +213,8 @@ function XMLHttpRequest()
     </script> 
 
     <br>
-
-    </main>
-
+-->
+    
 </body>
 
 </html>
