@@ -24,8 +24,8 @@ if ($resultado->num_rows > 0) {
                 <tr>
                     <th>" . $fila['fechaLlegada'] . "</th>
                     <th><a href='../historial/index.php?id=".$fila['id']."'>" . $fila['enfermedad'] . "</a></th>
-                </tr>           //El link de aquí es el que debes cambiar para la redirección
-            ";
+                </tr>          
+            ";              //El link de aquí es el que debes cambiar para la redirección
     }
 
     $salida .= "
