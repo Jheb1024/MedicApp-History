@@ -1,3 +1,11 @@
+<?php
+$mysqli = new mysqli("localhost", "root", "", "doctores");
+
+$salida = "";
+$query = "SELECT * FROM paciente WHERE id_paciente = ".$_GET['id'];
+$resultado = $mysqli->query($query);
+$fila = $resultado->fetch_assoc()
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -53,7 +61,7 @@
         </div>
     </div>
     <div class="columns">
-        <div class="column is-half is-offset-one-quarter" id="datos">
+        <div class="column is-half is-offset-one-quarter">
             <div class="columns is-vcentered">
                 <div class="column is-one-third has-text-left">
                     <label class="label">Datos del Paciente</label>
@@ -67,7 +75,7 @@
                     <label class="label">Nombre:</label>
                 </div>
                 <div class="column is-two-thirds">
-                    <input class="input" id="name" type="text" value="Juan Perez" style="text-align: center">
+                    <input class="input" id="name" type="text" value="<?php echo $fila['nombre']." ".$fila['app']." ".$fila['apm']?>" style="text-align: center">
                 </div>
             </div>
             <div class="columns is-vcentered">
@@ -75,7 +83,7 @@
                     <label class="label">No. Paciente:</label>
                 </div>
                 <div class="column is-two-thirds">
-                    <label class="label">1560</label>
+                    <input class="input" readonly id="no_paciente" type="text" value="<?php echo $fila['id_paciente']?>" style="text-align: center">
                 </div>
             </div>
             <div class="columns is-vcentered">
@@ -83,7 +91,7 @@
                     <label class="label">Edad:</label>
                 </div>
                 <div class="column is-two-thirds">
-                    <label class="label">21 Años</label>
+                    <input class="input" readonly id="edad" type="text" value="<?php echo $fila['edad']?>" style="text-align: center">
                 </div>
             </div>
             <div class="columns is-vcentered">
@@ -91,7 +99,7 @@
                     <label class="label">Altura:</label>
                 </div>
                 <div class="column is-two-thirds">
-                    <input class="input" type="number" value="1.71" style="text-align: center">
+                    <input class="input" type="number" id="altura" value="<?php echo $fila['altura']?>" style="text-align: center">
                 </div>
             </div>
             <div class="columns is-vcentered">
@@ -99,7 +107,7 @@
                     <label class="label">Peso (Kg):</label>
                 </div>
                 <div class="column is-two-thirds">
-                    <input class="input" type="number" value="70"style="text-align: center">
+                    <input class="input" type="number" id="peso" value="<?php echo $fila['peso']?>"style="text-align: center">
                 </div>
             </div>
             <div class="columns is-vcentered">
@@ -107,7 +115,7 @@
                     <label class="label">No. Seguro Social:</label>
                 </div>
                 <div class="column is-two-thirds">
-                    <input class="input" type="number" value="1234567890" style="text-align: center">
+                    <input class="input" type="number" id="no_seguro" value="<?php echo $fila['no_seguro_social']?>" style="text-align: center">
                 </div>
             </div>
             <div class="columns is-vcentered">
@@ -115,7 +123,7 @@
                     <label class="label">Fecha Nacimiento:</label>
                 </div>
                 <div class="column is-two-thirds">
-                    <label class="label">15 de Enero de 1998</label>
+                    <input class="input" readonly id="fecha_nacimiento" type="date" value="<?php echo $fila['FechaNacimiento']?>" style="text-align: center">
                 </div>
             </div>
             <div class="columns is-vcentered">
@@ -123,18 +131,23 @@
 
                 </div>
                 <div class="column is-two-thirds">
-                    <a class="button is-primary">
+                    <a class="button is-primary" id="btn-actualizar">
                         <strong>Actualizar</strong>
                     </a>
                 </div>
             </div>
             <br>
+            <?php
+                $query = "SELECT * FROM historialmedico WHERE id_paciente = ".$_GET['id'];
+                $resultado = $mysqli->query($query);
+                $fila = $resultado->fetch_assoc()
+            ?>
             <div class="columns is-vcentered">
                 <div class="column is-one-third has-text-left">
                     <label class="label">Antecedentes:</label>
                 </div>
-                <div class="column is-two-thirds">
-                    <label class="label">Alergia a los antibióticos, diabetes, hipertensión.</label>
+                <div class="column is-two-thirds" id="antecedentes">
+                    <label class="label"><?php echo $fila['antecedentes'] ?></label>
                 </div>
             </div>
             <div class="columns is-vcentered">
@@ -142,22 +155,31 @@
                     <label class="label">Consultas:</label>
                 </div>
                 <div class="column is-two-thirds">
-                    <a class="button is-primary">
+                    <a class="button is-primary" id="btn-ver-consultas">
                         <strong>Ver consultas</strong>
                     </a>
-                    <a class="button is-primary">
+                    <a class="button is-primary" href="../consulta/index.php">
                         <strong>Nueva Consulta</strong>
                     </a>
+                </div>
+            </div>
+            <br>
+            <div class="columns is-centered">
+                <div class="column is-one-third has-text-left">
+
+                </div>
+                <div class="column is-two-thirds" id="consultas">
+
                 </div>
             </div>
         </div>
     </div>
 </main>
-<input type="text" style="visibility: hidden" id="paciente" value="<?php echo $_GET['id']?>">
+<input type="text" style="visibility: hidden" id="id_paciente" value="<?php echo $_GET['id']?>">
 <footer class="footer">
     <label class="label has-text-right">&#169 MedicApp 2021</label>
 </footer>
 <script src="../../libs/jquery-3.6.0.min.js"></script>
-<script src="../../controllers/buscar_ajax.js"></script>
+<script src="../../controllers/historial_ajax.js"></script>
 </body>
 </html>

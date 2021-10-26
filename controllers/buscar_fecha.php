@@ -28,7 +28,7 @@ if ($resultado->num_rows > 0) {
         $salida .= "
                 <tr>
                     <th>" . $fila['id_paciente'] . "</th>
-                    <th><a href='../historial/index.php'>" . $fila['nombre'] . "</a></th>
+                    <th><a href='../historial/index.php?id=".$fila['id_paciente']."'>" . $fila['nombre'] . "</a></th>
                 </tr>
             ";
     }
