@@ -77,6 +77,6 @@
     <label class="label has-text-right">&#169 MedicApp 2021</label>
 </footer>
 <script src="../../libs/jquery-3.6.0.min.js"></script>
-<script src="../../controllers/buscar_ajax.js"></script>
+<script src="../../controllers/historial_ajax.js"></script>
 </body>
 </html>

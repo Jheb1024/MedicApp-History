@@ -53,7 +53,7 @@
         </div>
     </div>
     <div class="columns">
-        <div class="column is-half is-offset-one-quarter">
+        <div class="column is-half is-offset-one-quarter" id="datos">
             <div class="columns is-vcentered">
                 <div class="column is-one-third has-text-left">
                     <label class="label">Datos del Paciente</label>
@@ -67,7 +67,7 @@
                     <label class="label">Nombre:</label>
                 </div>
                 <div class="column is-two-thirds">
-                    <input class="input" type="text" value="Juan Perez" style="text-align: center">
+                    <input class="input" id="name" type="text" value="Juan Perez" style="text-align: center">
                 </div>
             </div>
             <div class="columns is-vcentered">
@@ -153,8 +153,11 @@
         </div>
     </div>
 </main>
+<input type="text" style="visibility: hidden" id="paciente" value="<?php echo $_GET['id']?>">
 <footer class="footer">
     <label class="label has-text-right">&#169 MedicApp 2021</label>
 </footer>
+<script src="../../libs/jquery-3.6.0.min.js"></script>
+<script src="../../controllers/buscar_ajax.js"></script>
 </body>
 </html>
