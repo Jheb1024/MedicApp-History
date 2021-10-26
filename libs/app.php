@@ -1,9 +1,10 @@
 <?php
 require_once 'controllers/error_recurso.php';
+require_once 'user_session.php';
 class App{
     function __construct(){
-       // echo "<p>Nueva App</p>";
-
+      //echo "<p>Nueva App</p>";
+       
         $url = isset($_GET['url']) ? $_GET['url']:null;
         $url = rtrim($url, '/');
         $url = explode('/', $url);
@@ -15,10 +16,7 @@ class App{
             return false;
         }
         //var_dump($url);
-
         $archivoController = 'controllers/' . $url[0] . '.php';
-        //echo $url[0];
-
         if(file_exists($archivoController)){
             require_once $archivoController;
             $controller = new $url[0];

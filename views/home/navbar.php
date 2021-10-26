@@ -13,7 +13,7 @@
             <li><a href="home">Inicio</a></li>
             <li><a href="buscar_paciente">Buscar</a></li>
             <li><a href="agregar_paciente">Agregar Paciente</a></li>
-            <li style="float: right"><a href="main">Cerrar Sesión</a></li>
+            <li style="float: right"><a href="logout">Cerrar Sesión</a></li>
         </ul>
     </div>
 </body>

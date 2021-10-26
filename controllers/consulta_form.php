@@ -1,18 +1,15 @@
 <?php
-//require_once 'models/administrarPaciente.php';
-class Consulta extends Controller{
+require_once ('C:/xampp/htdocs/MedicApp-History/models/administrarPaciente.php');
+header("Content-Type: text/plain");
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-    function __construct(){
-
-        parent::__construct();
-        session_start();
-        if(isset($_SESSION['user'])){
-            $this->view->render('consulta/index');
-            /*$administrarPaciente = new AdministrarPaciente();
+            session_start();
             
+            $administrarPaciente = new AdministrarPaciente();
             date_default_timezone_set("America/Mexico_City");
             
-            if (isset($_POST['consulta'])){
+            
                 $idPaciente = 1;
                 $nombrePaciente = 'Ileana';
                 $fecha_consulta = date('Y-m-d H:i:s');
@@ -25,11 +22,8 @@ class Consulta extends Controller{
             
                 $administrarPaciente->crearConsultaPaciente($idPaciente,$enfermedad,$sintomas,$fecha_consulta,
                 $medicacion, $nombrePaciente,$presionArterial,$temperatura,$coste);
-            }*/
-        }else{
-            header('Location: main');
-        }
-        //echo"<p> error al cargar recurso</p>";
-    }
-}
+                echo $idPaciente;
+            
+            
+
 ?>

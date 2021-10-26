@@ -17,8 +17,6 @@ class Agregar extends conectar {
         $sql->bindValue(7, $p_peso);
         $sql->bindValue(8, $p_seguro);
         $sql->execute();
-
-       
     }
 }
 

@@ -13,7 +13,12 @@
        <h1 class="center">Bienvenido a MedicApp-History la aplicación web de los médicos</h1>
    </div>
     <div id="login">
-        <form action="" method="post">
+        <form action="" method="POST">
+            <?php 
+                if(isset($error_login)){
+                    echo $error_login;
+                }
+            ?>
             <ul>
                 <li>
                     <label for="user_name">Usuario:</label>

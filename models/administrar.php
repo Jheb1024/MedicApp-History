@@ -1,17 +1,17 @@
 <?php
-abstract class Administrar{
+class Administrar{
 
     function __construct(){
 
     }
 
-    function actualizarPaciente(){
+    public function actualizarPaciente(){
 
     }
-    function BuscarPaciente(){
+    public function BuscarPaciente(){
 
     }
-    function crearPaciente(){
+    public function crearPaciente(){
 
     }
 }
