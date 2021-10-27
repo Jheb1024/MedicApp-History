@@ -17,8 +17,5 @@ $aux = new administrarModel();
     
     $aux->insert($nombre, $apellidop, $apellidom, $altura, $edad, $fechana, $peso,$seguros);
     
-    echo "registro exitoso";
-
-
-
+    //echo '<script language="javascript">alert("Registro exitoso");</script>';
 ?>

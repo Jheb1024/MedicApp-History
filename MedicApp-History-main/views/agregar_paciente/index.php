@@ -1,15 +1,114 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset = "UTF-8">
     <meta name="viewport" content= "width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"> </script>
     <script type= "text/javascript" src="views\agregar_paciente\ajax.js"></script>
-    <script type= "text/javascript" src="views\agregar_paciente\app.js"></script>
     <link rel="stylesheet" href="bulma/css/bulma.css">
-    <link rel="stylesheet" href="bulma/css/pop.css">
-    <title>MedicAPP</title>
+     <title>MedicAPP</title>
+
+     <style>
+    /*body {font-family: Arial, Helvetica, sans-serif;}*/
+    * {box-sizing: border-box;}
+
+    /* Set a style for all buttons */
+    button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    }
+
+    button:hover {
+    opacity:1;
+    }
+
+    /* Float cancel and delete buttons and add an equal width */
+    .cancelbtn, .deletebtn {
+    float: left;
+    width: 50%;
+    }
+
+    /* Add a color to the cancel button */
+    .cancelbtn {
+    background-color: #ccc;
+    color: black;
+    }
+
+    /* Add a color to the delete button */
+    .deletebtn {
+    background-color: #f44336;
+    }
+
+    /* Add padding and center-align text to the container */
+    .container {
+    padding: 16px;
+    text-align: center;
+    }
+
+    /* The Modal (background) */
+    .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 4;
+    top: 0;
+    width: 600px; /* Full width */
+    height: 400px; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    padding-top: 50px;
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    }
+
+    /* Style the horizontal ruler */
+    hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+    }
+    
+    /* The Modal Close Button (x) */
+    .close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #f1f1f1;
+    }
+
+    .close:hover,
+    .close:focus {
+    color: #f44336;
+    cursor: pointer;
+    }
+
+    /* Clear floats */
+    .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+    }
+
+    /* Change styles for cancel button and delete button on extra small screens */
+    @media screen and (max-width: 300px) {
+    .cancelbtn, .deletebtn {
+        width: 100%;
+    }
+    }
+    </style>
     
 </head>
 <body>
@@ -101,18 +200,25 @@
 </p>
 
 <button type = "button" id= "guardar" name= "guardar" > Guardar </button>
-<input type="reset" id="borrar" value="Borrar"> 
+<button type="reset" id="borrar" value="Borrar">  Borrar </button>
 <!--<input type="submit" id="guardar" value="Guardar">-->
 
 
-<div id="mensaje"></div>
-    <span id="load"></span>
+<div id="mensaje">
 
-    <div class = "modal-container" id="modal-container">
-    <div class= "modal" id= "modal">
-        <h1>¡Registro exitoso!</h1>
-        <p> El registro se ha guardado</p>
-        <button id="close"> Cerrar </button>
+    <div id="id01" class="modal">
+    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal"></span>
+    <form class="modal-content" action="/action_page.php">
+    <div class="container">
+        <h1>Registro exitoso</h1>
+        <p>El registro se ha realizado con exitoso</p>
+
+        <div class="clearfix">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="deletebtn">Delete</button>
+        </div>
+    </div>
+    </form>
 </div>
 </div>
 
@@ -120,101 +226,6 @@
 
 
 
-
-<!--
-<script> 
-$('formulario').on('submit', function(event) {
-    event.preventDefault();
-
-    $.ajax({
-        url: "alerta.php",
-        type: "POST",
-        data:{
-        //aca colocaras todos los campos que deseas enviar al backend
-        'nombre': $('#nombre').val(), 
-        'app': $('#app').val(),
-    },}
-        contentType: false,
-        processData: false,
-        success: function(data) {
-            $('#mensaje').html(data);
-        }
-    });
-
-});
-
-</script>-->
-
-<!-- <script type="text/javascript">
-
-$(document).ready(function(){
-    //$('#guardar').click(function(){
-
-var nombre = document.getElementById('nombre').value;
-var app = document.getElementById('app').value;
-var apm = document.getElementById('apm').value;
-
-var datos = "nombre=" + nombre + "&app=" + app;
-
-$('#mensaje').load('alerta.php');
-
-});
-//});
-
-
-/*
-
-
-var resultado = document.getElementById("mensaje");
-
-function enviar(){
-
-    var nombre= document.getElementId("nombre").value;
-    var apellidop = document.getElementId("app").value;
-
-    var datos = "nombre="+nombre+"&app="+apellidop;
-
-    var xmlhttp = new XMLHttpRequest();
-        
-
-    xmlhttp.onreadystatechange = function()
-    {
-        if(xmlhttp.readyState == 4 $$ xmlhttp.status == 200){
-           document.getElementById("mensaje").innerHTML = xmlhttp.responseText;
-        }
-    };
-
-    xmlhttp.open("POST", "alerta.php", true);
-    xmlhttp.setRequestHeader("Content-type", "aplication/x-xww-form-url4ncode");
-    xmlhttp.send(datos);
-}
-
-function XMLHttpRequest() 
-{
-  var xmlHttp=null;
-  if (window.ActiveXObject) 
-    xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-  else 
-    if (window.XMLHttpRequest) 
-      xmlHttp = new XMLHttpRequest();
-  return xmlHttp;
-}
-
-/*    $('#guardar').click(function(){
-
-        var nombre = document.getElementById('nombre').value;
-        var app = document.getElementById('app').value;
-        var apm = document.getElementById('apm').value;
-
-        var nombrecompleto = nombre + app + apm;
-*/
-
- 
-    </script> 
-
-    <br>
--->
-    
 </body>
 
 </html>
