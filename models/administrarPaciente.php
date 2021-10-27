@@ -20,7 +20,6 @@ require_once 'C:/xampp/htdocs/MedicApp-History/models/administrar.php';
         public function crearConsultaPaciente($idPaciente,$enfermedad,$sintomas,$fecha,$medicacion, $nombrePaciente,
         $presionArterial,$temperatura,$coste){
 
-            $id = 10;
             $database = Database::Instancia();
             $conexion = $database->connect();
             $query = $conexion->prepare('INSERT INTO consulta(id_paciente, enfermedad, sintomas, 

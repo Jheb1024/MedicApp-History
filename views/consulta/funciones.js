@@ -78,7 +78,7 @@ function MotorAjax(){
         dataType: 'html',
         type:  'post',
         beforeSend: function () {
-                $("#resultado").html("Procesando, espere por favor...");
+                //$("#resultado").html("Procesando, espere por favor...");
                 console.log(parametros);
         },
         success:  function (response) {
@@ -101,7 +101,7 @@ function MotorAjax(){
 });
 }
 function resetForm($form) {
-    $form.find('input:text, input:password, input:file, select, textarea').val('');
+    $form.find('input:text, input:number,, input:password, input:file, select, textarea').val('');
     $form.find('input:radio, input:checkbox')
          .removeAttr('checked').removeAttr('selected');
 }
