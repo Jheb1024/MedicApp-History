@@ -82,9 +82,9 @@ function MotorAjax(){
                 console.log(parametros);
         },
         success:  function (response) {
-                jQuery("#resultado").html(response);
+                //jQuery("#resultado").html(response);
                 console.log(response);
-
+                
                 document.getElementById('id01').style.display='block';
             
                 // Get the modal
@@ -96,7 +96,12 @@ function MotorAjax(){
                         modal.style.display = "none";
                     }
                 }
-                
+                resetForm($('#consultaForm'));
         }
 });
+}
+function resetForm($form) {
+    $form.find('input:text, input:password, input:file, select, textarea').val('');
+    $form.find('input:radio, input:checkbox')
+         .removeAttr('checked').removeAttr('selected');
 }

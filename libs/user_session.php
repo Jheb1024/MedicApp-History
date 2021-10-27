@@ -2,8 +2,6 @@
 require_once 'config/db.php';
 class UserSession{
 
-    private $Session; //Bandera para actualizar el estado de la sesión
-
     public function __construct(){
         
     }

@@ -114,23 +114,29 @@
     <br>
     <h3>Datos de la consulta</h3>
     <div id="consulta">
-        <form  action="" method="POST" style="display: grid, grid-template-columns: 1fr 1fr,
-  grid-gap: 20px">
+        <form id="consultaForm" action="" method="POST">
         <div style="text-align: left" id="datos-patologicos">
             <ul >
                 <li>
                     <label for="sintomas">Síntomas:</label>
-                    <textarea id='sintomas' name="sintomas" rows="5" cols="50" ></textarea>
-                    
-                </li><div id='sintomas_advice'></div>
+                    <textarea id='sintomas' name="sintomas" rows="5" cols="50" placeholder = "Tos, fiebre..."
+                    onkeyup="if(this.value){document.getElementById('sintomas_advice').innerHTML=''}"
+                    ></textarea>
+                </li>
+                <div id='sintomas_advice'></div>
                 <li>
                     <label for="enfermedad">Enfermedad:</label>
-                    <textarea id='enfermedad' name="enfermedad" rows="2" cols="50"></textarea>
-                    <div id='enfermedad_advice'></div>
+                    <textarea id='enfermedad' name="enfermedad" rows="2" cols="50" placeholder = "Neumonía"
+                    onkeyup="if(this.value){document.getElementById('enfermedad_advice').innerHTML=''}"
+                    ></textarea>
+                    
                 </li>
+                <div id='enfermedad_advice'></div>
                 <li>
                     <label for="medicacion">Medicación:</label>
-                    <textarea id='medicacion' name="medicacion" rows="4" cols="50"></textarea>
+                    <textarea id='medicacion' name="medicacion" rows="4" cols="50" placeholder='Ibuprofeno (Advil, Motrin IB...)'
+                    onkeyup="if(this.value){document.getElementById('medicacion_advice').innerHTML=''}"
+                        ></textarea>
                     <div id='medicacion_advice'></div>
                 </li>
             </ul>
@@ -139,17 +145,23 @@
             <ul >
                 <li>
                     <label for="presion_arterial">Presión arterial:</label>
-                    <input type="text" id="presion_arterial" name="presion_arterial">
+                    <input type="number" min="1" id="presion_arterial" name="presion_arterial" placeholder='115-155'
+                    onkeyup="if(this.value){document.getElementById('presion_advice').innerHTML=''}"
+                    >
                     <div id='presion_advice'></div>
                 </li>
                 <li>
                     <label for="temperatura">Temperatura:</label>
-                    <input type="text" id="temperatura" name="temperatura">
+                    <input type="number" step="0.1" min="1" id="temperatura" name="temperatura" placeholder='37'
+                    onkeyup="if(this.value){document.getElementById('temperatura_advice').innerHTML=''}"
+                    >
                     <div id='temperatura_advice'></div>
                 </li>
                 <li>
-                    <label for="coste">Coste:</label>
-                    <input type="text" id="coste" name="coste">
+                    <label for="coste">Costo: $</label>
+                    <input type="number" step="0.1" min="0" id="coste" name="coste" placeholder='0.00'
+                    onkeyup="if(this.value){document.getElementById('coste_advice').innerHTML=''}"
+                    >
                     <div id='coste_advice'></div>
                 </li>
             </ul>
@@ -163,12 +175,10 @@
     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal"></span>
     <form class="modal-content" action="/action_page.php">
     <div class="container">
-        <h1>Delete Account</h1>
-        <p>Are you sure you want to delete your account?</p>
-
+        <h1>Consulta</h1>
+        <p>La consulta ha sido registrada</p>
         <div class="clearfix">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="deletebtn">Delete</button>
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="deletebtn">Aceptar</button>
         </div>
     </div>
     </form>
